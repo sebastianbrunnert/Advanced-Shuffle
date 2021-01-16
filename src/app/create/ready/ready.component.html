@@ -1,0 +1,4 @@
+<div class="container mt-5">
+    <div class="alert alert-success" role="alert" *ngIf="this.app.readyState == 'PLAYLIST'">Fertig! Starte die Playlist <strong>Advanced Shuffle #{{this.app.advancedShufflePlaylists+1}}</strong>, aber vergiss nicht den Spotify Shuffle auszuschalten.</div>
+    <div class="alert alert-success" role="alert" *ngIf="this.app.readyState == 'QUEUE'">Fertig! Geshuffelte Songs wurden zur <strong>Warteschlange</strong> hinzugefügt.</div>
+</div>

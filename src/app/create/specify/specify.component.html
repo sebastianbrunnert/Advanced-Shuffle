@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <h1>Verfeinere deinen Shuffle</h1>
+
+    <div class="mt-5">
+        <div *ngFor="let playlist of this.app.playlists" class="mb-5">
+            <h4>{{playlist.name}} ({{playlist.realPercent}})%</h4>
+            <input *ngIf="this.app.playlists.length == 1;" disabled type="range" class="form-control-range" value="{{playlist.percent}}" min="0" max="100" #ranger (input)="changeValue(playlist.id,ranger.value)">
+            <input *ngIf="this.app.playlists.length > 1;" type="range" class="form-control-range" value="{{playlist.percent}}" min="0" max="100" #ranger (input)="changeValue(playlist.id,ranger.value)">
+        </div>
+    </div>
+
+    <h4 style="margin-top: 6rem;">Wieviele Songs möchtest du Shuffeln? ({{this.choosedSongs}} Songs)</h4>
+    <input type="range" class="form-control-range" min="1" max="{{this.possibleSongs}}" value="{{this.possibleSongs}}" step="1" #ranger (input)="changeValueSongs(ranger.value)">
+
+    <div class="mt-5 mb-5">        
+        <a on-click="addToPlaylist()" class="btn btn-block btn-success" style="color: white;">Sichere Shuffle als Playlist (Empfohlen)</a>
+        <a *ngIf="this.choosedSongs <= 100" on-click="addToQueue()" class="btn btn-block btn-success" style="color: white;">Füge Shuffle zur Warteschlang hinzu</a>
+
+        <button *ngIf="this.choosedSongs > 100" type="button" disabled class="btn btn-block btn-success" style="color: white;">Füge Shuffle zur Warteschlang hinzu</button>
+        <div *ngIf="this.choosedSongs > 100" id="alert" class="alert alert-danger mt-2" role="alert">Aufgrund von Serverkapazitäten ist das Hinzufügen uir Warteschlange nur mit bis zu 100 Songs möglich.</div>
+    </div>
+
+</div>

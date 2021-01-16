@@ -1,0 +1,24 @@
+<div class="container mt-5">
+    <h1>Wähle Teile für deinen Shuffle</h1>
+
+    <div>
+        <div class="mt-5">
+            <input type="checkbox" class="form-check-input" (change)="this.likedSongs = !this.likedSongs">
+            <h3>Lieblingssongs</h3>
+        </div>
+
+
+        <h3 class="mt-5">Playlists</h3>
+        <div *ngFor="let playlist of this.playlists">
+            <input type="checkbox" class="form-check-input" (change)="playlist.clicked = !playlist.clicked">
+            <label>{{playlist.name}}</label>
+        </div>
+    </div>
+
+    <div class="mt-5 mb-5">
+        <div id="alert" class="alert alert-danger mb-2" role="alert" style="display: none;"></div>
+        <a on-click="read()" class="btn btn-block btn-primary" style="color: white;">Wählen</a>
+    </div>
+
+
+</div>
